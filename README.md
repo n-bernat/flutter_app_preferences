@@ -30,6 +30,8 @@ flutter pub get
 1. Create a class with your preferences:
 
 ```dart
+import 'package:flutter_app_preferences/flutter_app_preferences.dart';
+
 // A class that holds the preferences.
 class AppPreferences extends BaseAppPreferences {
   // An example that stores a boolean value.
@@ -93,7 +95,7 @@ Future<void> main() async {
 
 ```
 
-3. Provide it everywhere in your app:
+3. Provide and use it everywhere in your app:
 
 - `provider`
 
@@ -105,7 +107,9 @@ runApp(
     child: const MaterialApp(),
   ),
 );
+```
 
+```dart
 // Read all
 final prefs = context.watch<AppPreferences>();
 
@@ -129,7 +133,9 @@ Future<void> main() async {
 
   runApp(const MaterialApp());
 }
+```
 
+```dart
 // Write
 AppPreferences.i.highContrast.value = true;
 
