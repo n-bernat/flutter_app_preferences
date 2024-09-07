@@ -140,7 +140,7 @@ print(AppPreferences.i.highContrast.value);
 return ListenableBuilder(
   listenable: AppPreferences.i.highContrast,
   builder: (context, _) => Text(
-    'High contrast? ${AppPreferences.i.highContrast}',
+    'High contrast? ${AppPreferences.i.highContrast.value}',
   ),
 );
 ```
