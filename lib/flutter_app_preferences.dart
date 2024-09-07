@@ -34,7 +34,7 @@ abstract class BaseAppPreferences extends ChangeNotifier {
 }
 
 /// A class that holds the app preferences.
-class Preference<T> extends ValueNotifier<T> {
+class Preference<T extends Object> extends ValueNotifier<T> {
   /// Creates a new instance of [Preference].
   Preference(
     String key,
