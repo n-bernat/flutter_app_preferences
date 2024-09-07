@@ -15,7 +15,7 @@ abstract class BaseAppPreferences extends ChangeNotifier {
     );
 
     for (final prop in props) {
-      prop.addListener(prop.notifyListeners);
+      prop.addListener(notifyListeners);
     }
   }
 
