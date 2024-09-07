@@ -13,4 +13,4 @@ dependencies:
   shared_preferences: ^2.2.3
 
 dev_dependencies:
-  leancode_lint: ^13.0.0
+  leancode_lint: ^14.1.0
