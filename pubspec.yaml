@@ -1,4 +1,4 @@
-name: app_preferences
+name: flutter_app_preferences
 description: "A simple package to manage app preferences and get notifications when something changes."
 version: 0.1.0
 homepage: https://nikodembernat.com
