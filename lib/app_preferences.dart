@@ -55,6 +55,7 @@ class Preference<T> extends ValueNotifier<T> {
               initialValue is List<bool> ||
               initialValue is List<int> ||
               initialValue is List<double> ||
+              initialValue is Enum ||
               (fromJson != null && toJson != null),
           'You have to provide a `fromJson` and `toJson` functions for custom `Preference` types.',
         ),
