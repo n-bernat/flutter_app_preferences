@@ -38,12 +38,55 @@ class Preference<T> extends ValueNotifier<T> {
   /// Creates a new instance of [Preference].
   Preference(
     String key,
-    T initialValue, {
+    super.initialValue, {
     List<T>? values,
     T Function(Map<String, Object?>)? fromJson,
     Map<String, Object?> Function(T)? toJson,
-  }) : super(initialValue) {
-    _key = 'settings.$key';
+  })  : assert(
+          initialValue is! Enum || (values != null),
+          'You have to provide a list of possible `values` for an enum type.',
+        ),
+        assert(
+          initialValue is String ||
+              initialValue is bool ||
+              initialValue is int ||
+              initialValue is double ||
+              initialValue is List<String> ||
+              initialValue is List<bool> ||
+              initialValue is List<int> ||
+              initialValue is List<double> ||
+              (fromJson != null && toJson != null),
+          'You have to provide a `fromJson` and `toJson` functions for custom `Preference` types.',
+        ),
+        _key = 'settings.$key',
+        _initialValue = initialValue,
+        _values = values,
+        _fromJson = fromJson,
+        _toJson = toJson;
+
+  final String _key;
+  final T _initialValue;
+  final List<T>? _values;
+  final Map<String, Object?> Function(T)? _toJson;
+  final T Function(Map<String, Object?>)? _fromJson;
+
+  bool _initialized = false;
+  T? _value;
+
+  /// Gets the value of the preference.
+  T get() => value;
+
+  @override
+  T get value {
+    if (!_initialized) {
+      _initialize();
+    }
+
+    return _value ?? _initialValue;
+  }
+
+  void _initialize() {
+    _initialized = true;
 
     if (_prefs == null) {
       throw StateError(
@@ -51,31 +94,14 @@ class Preference<T> extends ValueNotifier<T> {
       );
     }
 
-    if (initialValue is Enum) {
-      if (values == null) {
-        throw ArgumentError(
-          'You have to provide a list of values for an enum type.',
-        );
-      }
-
+    if (_initialValue is Enum) {
       _value = _prefs?.getString(_key) != null
-          ? values.firstWhere(
+          ? _values!.firstWhere(
               (v) => (v as Enum).name == _prefs?.getString(_key),
-              orElse: () => initialValue,
+              orElse: () => _initialValue,
             )
-          : initialValue;
+          : _initialValue;
     } else {
-      // TODO: Add a check for non-primitive types.
-      if (initialValue is List && initialValue is! List<String>) {
-        if (fromJson == null || toJson == null) {
-          throw ArgumentError(
-            'You have to provide a fromJson and toJson function for a list of custom objects.',
-          );
-        }
-
-        _toJson = toJson;
-      }
-
       final nullable = switch (T) {
         // Primitives
         (const (String)) => _prefs?.getString(_key),
@@ -93,26 +119,16 @@ class Preference<T> extends ValueNotifier<T> {
         // Custom objects
         (const (List)) => _prefs
             ?.getStringList(_key)
-            ?.map((v) => fromJson!(jsonDecode(v) as Map<String, dynamic>))
+            ?.map((v) => _fromJson!(jsonDecode(v) as Map<String, dynamic>))
             .toList(),
         _ => (_prefs?.containsKey(_key) ?? false)
-            ? fromJson!(_prefs!.getString(_key)! as Map<String, dynamic>)
+            ? _fromJson!(_prefs!.getString(_key)! as Map<String, dynamic>)
             : null,
       } as T?;
 
-      _value = nullable ?? initialValue;
+      _value = nullable ?? _initialValue;
     }
   }
-
-  late String _key;
-  late T _value;
-  late Map<String, Object?> Function(T) _toJson;
-
-  /// Gets the value of the preference.
-  T get() => value;
-
-  @override
-  T get value => _value;
 
   /// Sets the value of the preference.
   void set(T newValue) => value = newValue;
@@ -155,9 +171,9 @@ class Preference<T> extends ValueNotifier<T> {
       // Custom objects
       (const (List)) => _prefs?.setStringList(
           _key,
-          (newValue as List<T>).map((v) => jsonEncode(_toJson(v))).toList(),
+          (newValue as List<T>).map((v) => jsonEncode(_toJson!(v))).toList(),
         ),
-      _ => _prefs?.setString(_key, jsonEncode(_toJson(newValue))),
+      _ => _prefs?.setString(_key, jsonEncode(_toJson!(newValue))),
     };
 
     _value = newValue;
