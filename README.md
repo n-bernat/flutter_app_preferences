@@ -130,11 +130,19 @@ Future<void> main() async {
   runApp(const MaterialApp());
 }
 
-// Use - Read
+// Write
+AppPreferences.i.highContrast.value = true;
+
+// Read
 print(AppPreferences.i.highContrast.value);
 
-// Use - Write
-AppPreferences.i.highContrast.value = true;
+// Read and react to changes
+return ListenableBuilder(
+  listenable: AppPreferences.i.highContrast,
+  builder: (context, _) => Text(
+    'High contrast? ${AppPreferences.i.highContrast}',
+  ),
+);
 ```
 
 ## Additional information
