@@ -93,7 +93,7 @@ Future<void> main() async {
 
 ```
 
-3. Provide it everywhere in your app
+3. Provide it everywhere in your app.
 
 - `provider`
 
