@@ -60,14 +60,18 @@ class AppPreferences extends BaseAppPreferences {
         currentUser,
       ];
 }
+```
 
+```dart
 // Sample enum.
 enum FontSize {
   small,
   medium,
   large,
 }
+```
 
+```dart
 // Sample custom object.
 class User {
   const User({required this.name});
@@ -97,7 +101,7 @@ Future<void> main() async {
 
 3. Provide and use it everywhere in your app:
 
-- `provider`
+- using `provider`
 
 ```dart
 // Provide
@@ -119,7 +123,7 @@ final fontSize = context.select<AppPreferences, FontSize>(
 );
 ```
 
-- Global instance
+- using a global instance
 
 ```dart
 // Declare
