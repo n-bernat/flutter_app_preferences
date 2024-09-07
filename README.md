@@ -27,7 +27,7 @@ flutter pub get
 
 ## Usage
 
-1. Create a class with your preferences.
+1. Create a class with your preferences:
 
 ```dart
 // A class that holds the preferences.
@@ -81,7 +81,7 @@ class User {
 }
 ```
 
-2. Initialize an instance of `AppPreferences`.
+2. Initialize an instance of `AppPreferences`:
 
 ```dart
 Future<void> main() async {
@@ -93,7 +93,7 @@ Future<void> main() async {
 
 ```
 
-3. Provide it everywhere in your app.
+3. Provide it everywhere in your app:
 
 - `provider`
 
