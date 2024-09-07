@@ -139,6 +139,9 @@ AppPreferences.i.highContrast.value = true;
 
 ## Additional information
 
+- `BaseAppPreferences` extends `ChangeNotifier` and notifies its listeners when any `Preference` changes.
+- `Preference<T>` extends `ValueNotifier<T>` and notifies its listeners when its value changes.
+- You have to call `initialize` on app preferences before accessing any `Preference`.
 - This package requires at least Flutter 3.24 to work.
 - If there are any issues feel free to go to [GitHub Issues](https://github.com/n-bernat/flutter_app_preferences/issues) and report a bug.
 
