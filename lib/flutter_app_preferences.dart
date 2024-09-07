@@ -40,8 +40,8 @@ class Preference<T extends Object> extends ValueNotifier<T> {
     String key,
     super.initialValue, {
     List<T>? values,
-    T Function(Map<String, Object?>)? fromJson,
-    Map<String, Object?> Function(T)? toJson,
+    T Function(Map<String, Object?> json)? fromJson,
+    Map<String, Object?> Function(T item)? toJson,
   })  : assert(
           initialValue is! Enum || (values != null),
           'You have to provide a list of possible `values` for an enum type.',
