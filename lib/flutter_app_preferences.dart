@@ -40,8 +40,8 @@ class Preference<T extends Object> extends ValueNotifier<T> {
     String key,
     super.initialValue, {
     List<T>? values,
-    T Function(Map<String, Object?> json)? fromJson,
-    Map<String, Object?> Function(T item)? toJson,
+    T Function(Object json)? fromJson,
+    Object Function(T item)? toJson,
   })  : assert(
           initialValue is! Enum || (values != null),
           'You have to provide a list of possible `values` for an enum type.',
@@ -68,8 +68,8 @@ class Preference<T extends Object> extends ValueNotifier<T> {
   final String _key;
   final T _initialValue;
   final List<T>? _values;
-  final Map<String, Object?> Function(T)? _toJson;
-  final T Function(Map<String, Object?>)? _fromJson;
+  final Object Function(T)? _toJson;
+  final T Function(Object)? _fromJson;
 
   bool _initialized = false;
   T? _value;
@@ -118,10 +118,6 @@ class Preference<T extends Object> extends ValueNotifier<T> {
         (const (List<double>)) =>
           _prefs?.getStringList(_key)?.map(double.parse).toList(),
         // Custom objects
-        (const (List)) => _prefs
-            ?.getStringList(_key)
-            ?.map((v) => _fromJson!(jsonDecode(v) as Map<String, dynamic>))
-            .toList(),
         _ => (_prefs?.containsKey(_key) ?? false)
             ? _fromJson!(_prefs!.getString(_key)! as Map<String, dynamic>)
             : null,
@@ -170,10 +166,6 @@ class Preference<T extends Object> extends ValueNotifier<T> {
           (newValue as List<double>).map((v) => v.toString()).toList(),
         ),
       // Custom objects
-      (const (List)) => _prefs?.setStringList(
-          _key,
-          (newValue as List<T>).map((v) => jsonEncode(_toJson!(v))).toList(),
-        ),
       _ => _prefs?.setString(_key, jsonEncode(_toJson!(newValue))),
     };
 
