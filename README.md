@@ -1,14 +1,14 @@
-# app_preferences
+# flutter_app_preferences
 
-[![Package](https://img.shields.io/pub/v/app_preferences.svg)](https://pub.dev/packages/app_preferences) [![Publisher](https://img.shields.io/pub/publisher/app_preferences.svg)](https://pub.dev/packages/app_preferences/publisher) [![MIT License](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT) [![LeanCode Style](https://img.shields.io/badge/style-leancode__lint-black)](https://pub.dartlang.org/packages/leancode_lint)
+[![Package](https://img.shields.io/pub/v/flutter_app_preferences.svg)](https://pub.dev/packages/flutter_app_preferences) [![Publisher](https://img.shields.io/pub/publisher/flutter_app_preferences.svg)](https://pub.dev/packages/flutter_app_preferences/publisher) [![MIT License](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT) [![LeanCode Style](https://img.shields.io/badge/style-leancode__lint-black)](https://pub.dartlang.org/packages/leancode_lint)
 
-`app_preferences` manages shared preferences in a type-safe way and allows you to receive notifications when one of them changes. Each `Preference<T>` extends `ValueNotifier<T>` to maximize compatibility with existing solutions and provide seamless experience when using in Flutter.
+`flutter_app_preferences` manages shared preferences in a type-safe way and allows you to receive notifications when one of them changes. Each `Preference<T>` extends `ValueNotifier<T>` to maximize compatibility with existing solutions and provide seamless experience when using in Flutter.
 
-|                                                                                                              Status                                                                                                               |               Comments               |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------: |
-| [![app_preferences - Tests (stable)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_stable.yaml/badge.svg)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_stable.yaml) |    Current stable Flutter version    |
-|    [![app_preferences - Tests (beta)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_beta.yaml/badge.svg)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_beta.yaml)    |     Current beta Flutter version     |
-|    [![app_preferences - Tests (3.24.0)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_min.yaml/badge.svg)](https://github.com/n-bernat/app_preferences/actions/workflows/flutter_tests_min.yaml)    | The oldest supported Flutter version |
+|                                                                                                                          Status                                                                                                                           |               Comments               |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------: |
+| [![flutter_app_preferences - Tests (stable)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_stable.yaml/badge.svg)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_stable.yaml) |    Current stable Flutter version    |
+|    [![flutter_app_preferences - Tests (beta)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_beta.yaml/badge.svg)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_beta.yaml)    |     Current beta Flutter version     |
+|    [![flutter_app_preferences - Tests (3.24.0)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_min.yaml/badge.svg)](https://github.com/n-bernat/flutter_app_preferences/actions/workflows/flutter_tests_min.yaml)    | The oldest supported Flutter version |
 
 ## Getting started
 
@@ -16,7 +16,7 @@
 
 ```yaml
 dependencies:
-  app_preferences: latest_version
+  flutter_app_preferences: latest_version
 ```
 
 2. Get the dependencies.
@@ -143,7 +143,7 @@ AppPreferences.i.highContrast.value = true;
 - `Preference<T>` extends `ValueNotifier<T>` and notifies its listeners when its value changes.
 - You have to call `initialize` on app preferences before accessing any `Preference`.
 - This package requires at least Flutter 3.24 to work.
-- If there are any issues feel free to go to [GitHub Issues](https://github.com/n-bernat/flutter_app_preferences/issues) and report a bug.
+- If there are any issues feel free to go to [GitHub Issues](https://github.com/n-bernat/flutter_flutter_app_preferences/issues) and report a bug.
 
 ## Maintainers
 
