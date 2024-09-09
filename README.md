@@ -91,6 +91,8 @@ class User {
 
 ```dart
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final prefs = AppPreferences();
   await prefs.initialize();
 
@@ -133,6 +135,7 @@ class AppPreferences extends BaseAppPreferences {
 
 // Initialize
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await AppPreferences.i.initialize();
 
   runApp(const MaterialApp());

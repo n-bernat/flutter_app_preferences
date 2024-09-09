@@ -2,6 +2,7 @@
 
 - **BREAKING**: Fix type errors for a list of custom items.
 - **BREAKING**: `fromJson` and `toJson` require `dynamic` instead of `Map<String, Object?>`.
+- Added `example`.
 
 ## 0.2.0
 
