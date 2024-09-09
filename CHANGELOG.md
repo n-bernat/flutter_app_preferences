@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Add links to the repository and topics.
+
 ## 0.3.0
 
 - **BREAKING**: Fix type errors for a list of custom items.
