@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Update `README.md`.
+
 ## 0.4.0
 
 - **BREAKING**: Remove custom prefixes from keys.
