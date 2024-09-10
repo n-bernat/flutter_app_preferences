@@ -165,7 +165,7 @@ return ListenableBuilder(
 - You have to call `initialize` on app preferences before accessing any `Preference`.
 - Preferences are backed by `SharedPreferencesWithCache` which means that if you currently use `SharedPreferences.getInstance()` in your project and you want to migrate to this package you have to specify your keys with `flutter.` prefixes and, in case of Android, migrate them manually. For more information [see the official documentation](https://pub.dev/packages/shared_preferences#migration-and-prefixes).
 - This package requires at least Flutter 3.24 to work.
-- If there are any issues feel free to go to [GitHub Issues](https://github.com/n-bernat/flutter_flutter_app_preferences/issues) and report a bug.
+- If there are any issues feel free to go to [GitHub Issues](https://github.com/n-bernat/flutter_app_preferences/issues) and report a bug.
 
 ## Maintainers
 
