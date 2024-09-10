@@ -1,3 +1,7 @@
+## 0.4.0
+
+- **BREAKING**: Remove custom prefixes from keys.
+
 ## 0.3.3
 
 - Fix links to the repository.

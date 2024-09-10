@@ -59,7 +59,7 @@ class Preference<T extends Object> extends ValueNotifier<T> {
               (fromJson != null && toJson != null),
           'You have to provide a `fromJson` and `toJson` functions for custom `Preference` types.',
         ),
-        _key = 'settings.$key',
+        _key = key,
         _initialValue = initialValue,
         _values = values,
         _fromJson = fromJson,
