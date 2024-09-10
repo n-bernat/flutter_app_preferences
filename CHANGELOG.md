@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Fix versions.
+
 ## 0.3.1
 
 - Add links to the repository and topics.
